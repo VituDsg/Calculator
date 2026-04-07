@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#calculator {
+    width: 415px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+#visor {
+    border: 1px solid black;
+    width: 400px;
+    height: 50px;
+}
+
+#inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+#numbers-btn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    height: auto;
+    gap: 5px;
+}
+
+.btn-inputs {
+    width: 100px;
+    height: 50px;
+}
+
+.btn-ops {
+    width: 100px;
+    height: 50px;
+}
+
+#zero {
+    width: 205px;
+    height: 50px;
+}
+
+#operators-btn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100px;
+    gap: 5px;
+}
