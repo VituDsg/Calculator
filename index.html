@@ -10,8 +10,14 @@
     
     <div id="calculator">
         <div id="visor">
-
-        </div>
+            <input 
+                id="display-input"
+                placeholder="0"
+                maxlength="23"
+                autocomplete="off"
+                autofocus="autofocus"
+                >
+            </div>
         <div id="inputs">
             <div id="numbers-btn">
                 <button id="delete" class="btn-inputs">DEL</button>
@@ -26,16 +32,16 @@
                 <button id="three" class="btn-inputs">3</button>
                 <button id="two" class="btn-inputs">2</button>
                 <button id="one" class="btn-inputs">1</button>
-                <button id="zero">0</button>
+                <button id="zero"">0</button>
                 <button id="point" class="btn-inputs">.</button>
             </div>
 
             <div id="operators-btn">
-                <button id="divide" class="btn-ops">/</button>
-                <button id="multiply" class="btn-ops">x</button>
-                <button id="subtract" class="btn-ops">-</button>
-                <button id="add" class="btn-ops">+</button>
-                <button id="equals" class="btn-ops">=</button>
+                <button id="divide" class="btn-ops" onclick="atributteOp('/')">/</button>
+                <button id="multiply" class="btn-ops" onclick="atributteOp('*')">x</button>
+                <button id="subtract" class="btn-ops" onclick="atributteOp('-')">-</button>
+                <button id="add" class="btn-ops" onclick="atributteOp('+')">+</button>
+                <button id="equals" class="btn-ops" onclick="">=</button>
             </div>
             
         </div>
