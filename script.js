@@ -2,29 +2,68 @@ const display = document.querySelector('#display-input')
 
 let a;
 let b;
+let op;
+
+function setOperator(operator) {
+    op = operator;
+
+    a = display.value
+    a = parseFloat(a)
+
+
+    display.value = null
+}
+
+function setEquals() {
+    b = display.value
+    b = parseFloat(b)
+
+    console.log(a)
+    console.log(b)
+
+    operate(op, a, b)
+}
 
 function add (a, b) {
-    return a + b;
+    console.log( a + b)
 
 }
 
 function subtract (a, b) {
-    return a - b;
+    console.log( a - b)
 
 }
 
 function multiply (a, b) {
-    return a * b;
+    console.log( a * b)
 
 }
 
 function divide (a, b) {
-    return a/b;
+    console.log( a/b)
 }
 
 function operate (op, a, b) {
     
+    if (op === "+") {
+        return add(a, b)
+
+    } 
+    else if (op === "-") {
+        return subtract(a, b)
+
+    }
+    else if (op === "*") {
+        return multiply(a, b)
+
+    }
+    else if (op === "/") {
+        if(b === 0 ) return alert("Error, can't divide by 0!")
+
+        return divide(a, b)
+    }
 }
+
 const inputButtons = document.querySelectorAll(".btn-inputs")
 
 inputButtons.forEach((inputButton) => {
@@ -92,15 +131,13 @@ inputButtons.forEach((inputButton) => {
             
             break;
 
+            case "point":
+                console.log(".")
+                display.value += (".")
+            
+            break;
+
         }
 
     })
 })
-
-
-display.textContent(a)
-
-console.log(add(5, 6))
-console.log(subtract(5,3))
-console.log(multiply(2,5))
-console.log(divide(10,2))
