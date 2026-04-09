@@ -2,34 +2,52 @@ const inputDisplay = document.querySelector('#display-input')
 
 const display = document.querySelector('#visor')
 
-let a;
-let b;
-let c;
-let op;
+let a = null;
+let b = null;
+let c = null;
+let op = null;
 
 let result;
 
 function setOperator(operator) {
+
     op = operator;
 
-    a = inputDisplay.value
-    a = parseFloat(a)
+    if (c !== null) {
 
-    display.textContent = `${a} ${op}`
-
+        a = parseFloat(c)
+        display.textContent = `${a} ${op}`
+    } else {
+        a = parseFloat(inputDisplay.value)
+        display.textContent = `${a} ${op}`
+    }
+    
     inputDisplay.value = null
 }
 
 function setEquals() {
-    b = inputDisplay.value
-    b = parseFloat(b)
     
+    b = parseFloat(inputDisplay.value)
+
+    if ( a === null || b === null) {
+        alert("Please, enter a value")
+    }
+
     inputDisplay.value = null
 
     operate(op, a, b)
     
-    display.textContent = `${a} ${op} ${b} = ${result}`
+    if ( a !== null && a !== undefined && b !== null && b !== undefined) {
+        display.textContent = `${a} ${op} ${b} = ${result}`
+    }else {
+        display.textContent = ""
+    }
 
+    let c = result;
+
+    a = null
+    b = null
+    op = null;
 }
 
 const clearBtn = document.querySelector(".clear")
@@ -41,6 +59,13 @@ clearBtn.addEventListener('click', () => {
     a = null
     b = null
     op = null
+})
+
+const delBtn = document.querySelector(".del")
+
+delBtn.addEventListener('click', () => {
+
+    inputDisplay.value = inputDisplay.value.slice(0, -1)
 })
 
 function add (a, b) {
