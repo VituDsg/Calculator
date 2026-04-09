@@ -1,66 +1,92 @@
-const display = document.querySelector('#display-input')
+const inputDisplay = document.querySelector('#display-input')
+
+const display = document.querySelector('#visor')
 
 let a;
 let b;
+let c;
 let op;
+
+let result;
 
 function setOperator(operator) {
     op = operator;
 
-    a = display.value
+    a = inputDisplay.value
     a = parseFloat(a)
 
+    display.textContent = `${a} ${op}`
 
-    display.value = null
+    inputDisplay.value = null
 }
 
 function setEquals() {
-    b = display.value
+    b = inputDisplay.value
     b = parseFloat(b)
-
-    console.log(a)
-    console.log(b)
+    
+    inputDisplay.value = null
 
     operate(op, a, b)
+    
+    display.textContent = `${a} ${op} ${b} = ${result}`
+
 }
 
+const clearBtn = document.querySelector(".clear")
+
+clearBtn.addEventListener('click', () => {
+    display.textContent = ""
+    inputDisplay.value = null
+
+    a = null
+    b = null
+    op = null
+})
+
 function add (a, b) {
-    console.log( a + b)
+    return result = (a + b)
 
 }
 
 function subtract (a, b) {
-    console.log( a - b)
+    return result = (a - b)
 
 }
 
 function multiply (a, b) {
-    console.log( a * b)
+    return result = (a * b)
 
 }
 
 function divide (a, b) {
-    console.log( a/b)
+    return result = (a / b)
+}
+
+function rest (a, b) {
+    return result = ( a % b)
 }
 
 function operate (op, a, b) {
     
     if (op === "+") {
-        return add(a, b)
+        return result = add(a, b)
 
     } 
     else if (op === "-") {
-        return subtract(a, b)
+        return result = subtract(a, b)
 
     }
     else if (op === "*") {
-        return multiply(a, b)
+        return result = multiply(a, b)
 
+    }
+    else if( op === "%") {
+        return result = rest(a, b)
     }
     else if (op === "/") {
         if(b === 0 ) return alert("Error, can't divide by 0!")
 
-        return divide(a, b)
+        return result = divide(a, b)
     }
 }
 
@@ -73,67 +99,67 @@ inputButtons.forEach((inputButton) => {
 
             case "zero":
                 console.log(0)
-                display.value += 0
+                inputDisplay.value += 0
             
             break;
 
             case "one":
                 console.log("1")
-                display.value += 1
+                inputDisplay.value += 1
 
             break;
 
             case "two":
                 console.log(2)
-                display.value += 2
+                inputDisplay.value += 2
             
             break;
 
             case "three":
                 console.log(3)
-                display.value += 3
+                inputDisplay.value += 3
             
             break;
 
             case "four":
                 console.log(4)
-                display.value += 4
+                inputDisplay.value += 4
             
             break;
 
             case "five":
                 console.log(5)
-                display.value += 5
+                inputDisplay.value += 5
             
             break;
 
             case "six":
                 console.log(6)
-                display.value += 6
+                inputDisplay.value += 6
             
             break;
 
             case "seven":
                 console.log(7)
-                display.value += 7
+                inputDisplay.value += 7
             
             break;
 
             case "eight":
                 console.log(8)
-                display.value += 8
+                inputDisplay.value += 8
             
             break;
 
             case "nine":
                 console.log(9)
-                display.value += 9
+                inputDisplay.value += 9
             
             break;
 
             case "point":
                 console.log(".")
-                display.value += (".")
+                inputDisplay.value += (".")
             
             break;
 
