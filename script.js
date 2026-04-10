@@ -2,52 +2,61 @@ const inputDisplay = document.querySelector('#display-input')
 
 const display = document.querySelector('#visor')
 
-let a = null;
-let b = null;
-let c = null;
-let op = null;
+let a = 0;
+let b = 0;
+let c;
+let op;
 
 let result;
 
-function setOperator(operator) {
+function setValues(operate, valueA, valueB) {
+    if( a === null ){
+        a = parseFloat(inputDisplay.value)
+    }
+    else{
+        b = parseFloat(inputDisplay.value) 
+        display.textContent = `${a} ${op} ${b} `
+        inputDisplay.value = null
+    }
+}
 
+function setOperator(operator) {
     op = operator;
 
-    if (c !== null) {
+    a = parseFloat(a)
 
-        a = parseFloat(c)
-        display.textContent = `${a} ${op}`
-    } else {
-        a = parseFloat(inputDisplay.value)
-        display.textContent = `${a} ${op}`
-    }
-    
+    display.textContent = `${a} ${op}`
     inputDisplay.value = null
+
 }
 
 function setEquals() {
-    
-    b = parseFloat(inputDisplay.value)
 
-    if ( a === null || b === null) {
-        alert("Please, enter a value")
+    if (result === null || result === undefined) {
+        inputDisplay.value = null
+
+        operate(op, a, b)
+        
+        if ( a !== null && a !== undefined && b !== null && b !== undefined) {
+            display.textContent = `${a} ${op} ${b} = ${result}`
+        }else {
+            display.textContent = ""
+        }
+
+        b = 0
+        op = null
+        c = result
     }
+    else if(result !== null || result !== undefined) {
+        result = null
 
-    inputDisplay.value = null
+        operate(op, c, b)
 
-    operate(op, a, b)
-    
-    if ( a !== null && a !== undefined && b !== null && b !== undefined) {
-        display.textContent = `${a} ${op} ${b} = ${result}`
-    }else {
-        display.textContent = ""
+        display.textContent = `${c} ${op} ${b} = ${result}`
+
+        inputDisplay.value = null
     }
-
-    let c = result;
-
-    a = null
-    b = null
-    op = null;
+    
 }
 
 const clearBtn = document.querySelector(".clear")
@@ -56,16 +65,17 @@ clearBtn.addEventListener('click', () => {
     display.textContent = ""
     inputDisplay.value = null
 
-    a = null
-    b = null
+    a = 0;
+    b = 0;
     op = null
 })
 
 const delBtn = document.querySelector(".del")
 
 delBtn.addEventListener('click', () => {
-
     inputDisplay.value = inputDisplay.value.slice(0, -1)
+    a = Number(a.toString().slice(0, -1))
+    a = parseFloat(a)
 })
 
 function add (a, b) {
@@ -120,74 +130,166 @@ const inputButtons = document.querySelectorAll(".btn-inputs")
 inputButtons.forEach((inputButton) => {
     inputButton.addEventListener('click', () => {
 
-        switch (inputButton.id) {
+        if (op === null || op === undefined) {
+            switch (inputButton.id) {
 
-            case "zero":
-                console.log(0)
-                inputDisplay.value += 0
-            
-            break;
+                case "zero":
+                    console.log(0)
+                    a += "0"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "one":
-                console.log("1")
-                inputDisplay.value += 1
+                case "one":
+                    console.log("1")
+                    a += "1"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            break;
+                case "two":
+                    console.log(2)
+                    a += "2"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "two":
-                console.log(2)
-                inputDisplay.value += 2
-            
-            break;
+                case "three":
+                    console.log(3)
+                    a += "3"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "three":
-                console.log(3)
-                inputDisplay.value += 3
-            
-            break;
+                case "four":
+                    console.log(4)
+                    a += "4"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "four":
-                console.log(4)
-                inputDisplay.value += 4
-            
-            break;
+                case "five":
+                    console.log(5)
+                    a += "5"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "five":
-                console.log(5)
-                inputDisplay.value += 5
-            
-            break;
+                case "six":
+                    console.log(6)
+                    a += "6"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "six":
-                console.log(6)
-                inputDisplay.value += 6
-            
-            break;
+                case "seven":
+                    console.log(7)
+                    a += "7"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "seven":
-                console.log(7)
-                inputDisplay.value += 7
-            
-            break;
+                case "eight":
+                    console.log(8)
+                    a += "8"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "eight":
-                console.log(8)
-                inputDisplay.value += 8
-            
-            break;
+                case "nine":
+                    console.log(9)
+                    a += "9"
+                    a = parseFloat(a)
+                    inputDisplay.value = a
+                break;
 
-            case "nine":
-                console.log(9)
-                inputDisplay.value += 9
-            
-            break;
+                case "point":
+                    console.log(".")
+                    a += (".")
+                    inputDisplay.value = a
+                break;
 
-            case "point":
-                console.log(".")
-                inputDisplay.value += (".")
-            
-            break;
+            }
+        } else {
+            switch (inputButton.id) {
 
+                case "zero":
+                    console.log(0)
+                    b += "0"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "one":
+                    console.log("1")
+                    b += "1"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "two":
+                    console.log(2)
+                    b += "2"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "three":
+                    console.log(3)
+                    b += "3"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "four":
+                    console.log(4)
+                    b += "4"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "five":
+                    console.log(5)
+                    b += "5"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "six":
+                    console.log(6)
+                    b += "6"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "seven":
+                    console.log(7)
+                    b += "7"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "eight":
+                    console.log(8)
+                    b += "8"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "nine":
+                    console.log(9)
+                    b += "9"
+                    b = parseFloat(b)
+                    inputDisplay.value = b
+                break;
+
+                case "point":
+                    console.log(".")
+                    b += (".")
+                    inputDisplay.value = b
+                break;
+
+            }       
         }
 
     })
