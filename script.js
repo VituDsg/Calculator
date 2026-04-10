@@ -2,6 +2,11 @@ const inputDisplay = document.querySelector('#display-input')
 
 const display = document.querySelector('#visor')
 
+const div = document.createElement("div");
+
+div.style.fontSize = "24px" ;
+div.style.padding = "12px"
+
 let a = 0;
 let b = 0;
 let c;
@@ -9,23 +14,22 @@ let op;
 
 let result;
 
-function setValues(operate, valueA, valueB) {
-    if( a === null ){
-        a = parseFloat(inputDisplay.value)
-    }
-    else{
-        b = parseFloat(inputDisplay.value) 
-        display.textContent = `${a} ${op} ${b} `
-        inputDisplay.value = null
-    }
-}
-
 function setOperator(operator) {
     op = operator;
 
     a = parseFloat(a)
 
-    display.textContent = `${a} ${op}`
+    div.textContent = op
+
+    display.appendChild(div)
+    
+    if (a !== 0) {
+        div.textContent = `${a} ${op}`
+        display.appendChild(div)
+    }
+
+    b = 0
+
     inputDisplay.value = null
 
 }
@@ -38,9 +42,12 @@ function setEquals() {
         operate(op, a, b)
         
         if ( a !== null && a !== undefined && b !== null && b !== undefined) {
-            display.textContent = `${a} ${op} ${b} = ${result}`
+            div.textContent = `${result}`
+
+            display.appendChild(div)
         }else {
-            display.textContent = ""
+            div.textContent = ""
+            display.appendChild(div)
         }
 
         b = 0
@@ -52,8 +59,12 @@ function setEquals() {
 
         operate(op, c, b)
 
-        display.textContent = `${c} ${op} ${b} = ${result}`
+        div.textContent = `${result}`
+        display.appendChild(div)
 
+        a = 0
+        b = 0
+        c = result
         inputDisplay.value = null
     }
     
@@ -62,7 +73,8 @@ function setEquals() {
 const clearBtn = document.querySelector(".clear")
 
 clearBtn.addEventListener('click', () => {
-    display.textContent = ""
+    div.textContent = ""
+    display.appendChild(div)
     inputDisplay.value = null
 
     a = 0;

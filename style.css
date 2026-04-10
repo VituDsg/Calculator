@@ -3,16 +3,37 @@
     padding: 0;
 }
 
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #calculator {
-    width: 415px;
+    width: 22.3%;
     height: 500px;
     border: 1px solid black;
+    border-radius: 3%;
+    padding: 20px 37px;
 }
 
 #visor {
-    border: 1px solid black;
-    width: 400px;
-    height: 50px;
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: 10%;
+}
+
+#display-input {
+    width: 100%;
+    height: 5%;
+    border: none;
+    outline: none;
+
+    font-size: 24px;
+    padding: 15px -15px;
+    text-align: right;
 }
 
 #inputs {
@@ -20,6 +41,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 5px;
+
 }
 
 #numbers-btn {
@@ -31,14 +53,42 @@
     gap: 5px;
 }
 
-.btn-inputs, .clear, .del {
+.btn-inputs{
     width: 100px;
     height: 50px;
+
+    border-radius: 7%;
+    border: 1px solid #161616;
+
+    background-color: white;
+    transition: transform 0.3s ease;
 }
 
-.btn-ops {
+.btn-inputs:hover{
+    transform: scale(0.98);
+    background-color: rgb(0, 0, 0);
+    color: white;
+    cursor: pointer;
+}
+
+.btn-ops, .clear, .del {
     width: 100px;
     height: 50px;
+
+    border-radius: 7%;
+    border: 1px solid #161616;
+
+    color: white;
+    background-color: blueviolet;
+
+    transition: transform 0.3s ease;
+}
+
+.btn-ops:hover, .clear:hover, .del:hover {
+    transform: scale(0.98);
+
+    background-color: white;
+    color: blueviolet;
 }
 
 #zero {
