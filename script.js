@@ -28,6 +28,11 @@ function setOperator(operator) {
         display.appendChild(div)
     }
 
+    if (result >= 0) {
+        div.textContent = `${result} ${op}`
+        display.appendChild(div)
+    }
+
     b = 0
 
     inputDisplay.value = null
@@ -106,7 +111,8 @@ function multiply (a, b) {
 }
 
 function divide (a, b) {
-    return result = (a / b)
+    result = (a / b)
+    return result.toFixed(2)
 }
 
 function rest (a, b) {
@@ -131,7 +137,9 @@ function operate (op, a, b) {
         return result = rest(a, b)
     }
     else if (op === "/") {
-        if(b === 0 ) return alert("Error, can't divide by 0!")
+        if(b === 0 ) {
+            return alert("Error, can't divide by 0!")
+        }
 
         return result = divide(a, b)
     }
