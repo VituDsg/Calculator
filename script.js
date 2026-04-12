@@ -7,12 +7,14 @@ const div = document.createElement("div");
 div.style.fontSize = "24px" ;
 div.style.padding = "12px"
 
-let a = 0;
-let b = 0;
+let a = "";
+let b = "";
 let c;
 let op;
 
 let result;
+
+//Function for define operator and define value A
 
 function setOperator(operator) {
     op = operator;
@@ -38,6 +40,8 @@ function setOperator(operator) {
     inputDisplay.value = null
 
 }
+
+//Function for some of value A and value B
 
 function setEquals() {
 
@@ -75,6 +79,8 @@ function setEquals() {
     
 }
 
+//Event for clear de calculator
+
 const clearBtn = document.querySelector(".clear")
 
 clearBtn.addEventListener('click', () => {
@@ -87,6 +93,8 @@ clearBtn.addEventListener('click', () => {
     op = null
 })
 
+//Event for backspace
+
 const delBtn = document.querySelector(".del")
 
 delBtn.addEventListener('click', () => {
@@ -94,6 +102,8 @@ delBtn.addEventListener('click', () => {
     a = Number(a.toString().slice(0, -1))
     a = parseFloat(a)
 })
+
+//Functions of operations
 
 function add (a, b) {
     return result = (a + b)
@@ -118,6 +128,8 @@ function divide (a, b) {
 function rest (a, b) {
     return result = ( a % b)
 }
+
+//Function for push operations
 
 function operate (op, a, b) {
     
@@ -145,12 +157,16 @@ function operate (op, a, b) {
     }
 }
 
+//Define values A and Values B
+
 const inputButtons = document.querySelectorAll(".btn-inputs")
 
 inputButtons.forEach((inputButton) => {
     inputButton.addEventListener('click', () => {
 
         if (op === null || op === undefined) {
+
+
             switch (inputButton.id) {
 
                 case "zero":
