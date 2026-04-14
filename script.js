@@ -80,11 +80,14 @@ const clearBtn = document.querySelector(".clear")
 clearBtn.addEventListener('click', () => {
     div.textContent = ""
     display.appendChild(div)
-    inputDisplay.value = null
+    inputDisplay.value = ""
 
     a = 0;
     b = 0;
-    op = null
+    c = 0
+    result = 0;
+    op = null;
+
 })
 
 const delBtn = document.querySelector(".del")
